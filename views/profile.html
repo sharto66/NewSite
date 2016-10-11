@@ -1,0 +1,28 @@
+<% include partials/head %>
+
+  <body>
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="text-center">
+        <h1 class=" fa fa-user"> Profile</h1><br>
+        <span><strong>user id = </strong>: <%= user._id ? user._id : '' %></span><br>
+        
+        <hr>
+        <div class="jumbotron">
+          <% if (user.local.email != null) { %>
+            <img src="https://avatars.io/gravatar/<%= user.local.email %>/140" class="img-circle"><br>
+            <strong>email</strong>: <%= user.local.email %><br>
+          <% } %>
+
+          <% if (user.facebook.id != null) { %>
+            <img src= <%= user.facebook.picture %> class="img-circle"><br>
+            <strong>id</strong>: <%= user.facebook.id %><br>
+            <strong>email</strong>: <%= user.facebook.email %><br>
+            <strong>name</strong>: <%= user.facebook.name %><br>
+            <strong>token</strong>: <%= user.facebook.token %>
+          <% } %>
+          </br></br><span><a href="/logout"> Sign out</a></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

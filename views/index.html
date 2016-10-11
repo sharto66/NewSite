@@ -1,0 +1,47 @@
+<% include partials/head %>
+	
+    <!-- Page Content -->
+    <div class="container">
+        
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <h2 class="intro-text text-center">Things to do</h2>
+                    <hr>
+                    <hr class="visible-xs">
+                    <!-- <p>Here is where Events and Activities will be displayed.</p> -->
+                    <div ng-controller="eventsCtrl">
+						<li ng-repeat="event in events" class="eventBrowse" event-popup>
+							<a href="#0" title="{{ event.description }}" >
+								<figure>
+									<img ng-src="{{ 'uploaded_images/' + event.picture }}" class="img-responsive" width="310"/><!-- Temporarily removed image size contraints to make it look better for demo -->
+									<figcaption>
+										<input class="eventSelect" type="checkbox" name="{{ event._id }}" ng-init="$last && finished()">
+										<strong>{{ event.name }}</strong>&nbsp;&nbsp;{{ '€' + event.price }}
+									</figcaption>
+								</figure>
+							</a>
+						</li>
+					</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row" ng-controller="bookingCtrl">
+            <div class="box">
+                <div class="col-lg-12">
+					<input id="booking-date-picker" type="date"/>&nbsp;
+					<input id="booking-minAttend" type="number"/>&nbsp;
+					<button type="button" class="btn btn-primary" name="create-booking" ng-click="createBooking()" >
+						Create
+					</button>
+				</div>
+			</div>
+		</div>
+        
+        <!-- End Page Content -->
+    </div>
+
+</body>
+
+</html>
